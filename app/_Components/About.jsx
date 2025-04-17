@@ -17,7 +17,7 @@ const About = () => {
           >
             <Image
               src="/jkbuilder images/about-image.jpg"
-              alt="About JKM Builders"
+              alt="About Sai Manjunath Builders and Developers"
               fill
               className="object-cover rounded-lg"
             />
@@ -28,9 +28,9 @@ const About = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">About JKM Builders</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">About Sai Manjunath Builders and Developers</h2>
             <p className="text-gray-600 mb-6">
-              JKM Builders is a leading construction company dedicated to delivering high-quality projects with a focus on innovation, sustainability, and customer satisfaction. With years of experience in the industry, we have built a reputation for excellence and reliability.
+              Sai Manjunath Builders and Developers is a leading construction company dedicated to delivering high-quality projects with a focus on innovation, sustainability, and customer satisfaction. With years of experience in the industry, we have built a reputation for excellence and reliability.
             </p>
             <div className="space-y-4">
               <div className="flex items-center">

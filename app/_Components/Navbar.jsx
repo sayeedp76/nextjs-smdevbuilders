@@ -8,12 +8,11 @@ import { motion } from 'framer-motion';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navItems = [
+  const navigation = [
     { name: 'Home', href: '/' },
-    { name: 'About Us', href: '/about' },
+    { name: 'About', href: '/about' },
     { name: 'Services', href: '/services' },
     { name: 'Gallery', href: '/gallery' },
-    { name: 'Testimonials', href: '/testimonials' },
     { name: 'Contact', href: '/contact' },
   ];
 
@@ -24,7 +23,7 @@ const Navbar = () => {
           <Link href="/" className="flex items-center">
             <Image
               src="/logo.PNG"
-              alt="JKM Builders Logo"
+              alt="Sai Manjunath Builders and Developers Logo"
               width={150}
               height={50}
               className="h-12 w-auto"
@@ -33,7 +32,7 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
+            {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
@@ -87,7 +86,7 @@ const Navbar = () => {
           className="md:hidden"
         >
           <div className="px-2 pt-2 pb-3 space-y-1">
-            {navItems.map((item) => (
+            {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}

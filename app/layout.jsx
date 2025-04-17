@@ -6,8 +6,8 @@ import Footer from './_Components/Footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'JKM Builders - Your Trusted Construction Partner',
-  description: 'JKM Builders - Building dreams into reality with quality construction and professional service.',
+  title: 'Sai Manjunath Builders and Developers',
+  description: 'Your trusted construction partner',
 }
 
 export default function RootLayout({ children }) {

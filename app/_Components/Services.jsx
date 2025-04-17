@@ -1,65 +1,108 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const Services = () => {
-  const services = [
-    {
-      title: 'PLANNING',
-      description: 'We create an idea of a beautiful and perfect house for you that you can make the most peaceful home',
-      image: '/jkbuilder images/planning-icon.png',
-    },
-    {
-      title: 'ARCHITECTURE',
-      description: 'We deliver the plans for diverse projects and keep all the essential rules guided by the government',
-      image: '/jkbuilder images/architecture-icon.png',
-    },
-    {
-      title: 'CONSTRUCTION',
-      description: 'We have trained worker with top-notch quality of raw material and responsible attitude towards the work',
-      image: '/jkbuilder images/construction-icon.png',
-    },
-  ];
-
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="relative py-20 min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
       <div className="container mx-auto px-4">
+        {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">WHAT WE DO?</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            We build commercial and housing projects with top-notch quality and affordability.
+          <h1 className="text-5xl font-bold text-white mb-6">
+            Our Services
+          </h1>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Comprehensive construction and development solutions tailored to your needs
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {services.map((service, index) => (
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            {
+              title: 'Residential Construction',
+              description: 'Custom homes, apartments, and residential complexes built to perfection.',
+              image: '/jkbuilder images/villa1.jpg',
+              icon: '🏠'
+            },
+            {
+              title: 'Commercial Projects',
+              description: 'Office spaces, retail outlets, and commercial complexes with modern amenities.',
+              image: '/jkbuilder images/modular 1.jpg',
+              icon: '🏢'
+            },
+            {
+              title: 'Interior Design',
+              description: 'Stunning interior spaces that reflect your style and enhance functionality.',
+              image: '/jkbuilder images/interior1.jpg',
+              icon: '🎨'
+            },
+            {
+              title: 'Renovation Services',
+              description: 'Transform existing spaces with our expert renovation and remodeling services.',
+              image: '/jkbuilder images/interior2.jpg',
+              icon: '🔨'
+            },
+            {
+              title: 'Project Management',
+              description: 'Professional project management ensuring timely and efficient completion.',
+              image: '/jkbuilder images/interior3.jpg',
+              icon: '📊'
+            },
+            {
+              title: 'Sustainable Building',
+              description: 'Eco-friendly construction solutions for a better future.',
+              image: '/jkbuilder images/interior4.jpg',
+              icon: '🌱'
+            }
+          ].map((service, index) => (
             <motion.div
               key={service.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-amber-500 transition-colors"
             >
-              <div className="relative w-20 h-20 mx-auto mb-4">
+              <div className="relative h-64">
                 <Image
                   src={service.image}
                   alt={service.title}
                   fill
-                  className="object-contain"
+                  className="object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent" />
               </div>
-              <h3 className="text-xl font-semibold text-center mb-2">{service.title}</h3>
-              <p className="text-gray-600 text-center">{service.description}</p>
+              <div className="p-6">
+                <div className="text-4xl mb-4">{service.icon}</div>
+                <h3 className="text-xl font-bold text-white mb-2">{service.title}</h3>
+                <p className="text-gray-300">{service.description}</p>
+              </div>
             </motion.div>
           ))}
         </div>
+
+        {/* Call to Action */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mt-20 text-center"
+        >
+          <h2 className="text-3xl font-bold text-white mb-4">Ready to Start Your Project?</h2>
+          <p className="text-xl text-gray-300 mb-8">
+            Contact us today for a free consultation and let's bring your vision to life
+          </p>
+          <button className="bg-amber-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-amber-700 transition-colors shadow-lg">
+            Get Started
+          </button>
+        </motion.div>
       </div>
     </section>
   );
