@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 const GetInTouch = () => {
   return (
-    <section className="relative py-20 min-h-screen">
+    <section className="relative min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <Image
@@ -16,148 +16,126 @@ const GetInTouch = () => {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-black/60"></div>
       </div>
-      
-      <div className="container mx-auto px-4 relative z-10">
+
+      <div className="container mx-auto px-6 py-20 relative z-10">
+        {/* Page Heading */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-white mb-4">
-            Get in Touch
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 bg-gradient-to-r from-teal-400 to-blue-400 text-transparent bg-clip-text">
+            Connect With Us
           </h2>
-          <p className="text-xl text-gray-200 max-w-2xl mx-auto">
-            Have questions or want to discuss your project? We'd love to hear from you.
+          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+            We’re here to help! Get in touch with us for inquiries, projects, or collaboration opportunities.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-white/10 backdrop-blur-sm p-8 rounded-lg shadow-lg"
+            className="bg-gray-800/70 backdrop-blur-md p-8 rounded-lg shadow-xl"
           >
-            <h3 className="text-2xl font-bold text-white mb-6">Send us a Message</h3>
+            <h3 className="text-2xl font-bold text-white mb-6">
+              Drop us a message!
+            </h3>
             <form className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-white mb-2">Name</label>
+                <label htmlFor="name" className="block text-white mb-2">
+                  Your Name
+                </label>
                 <input
                   type="text"
                   id="name"
-                  className="w-full px-4 py-2 rounded-md bg-white/20 text-white placeholder-gray-300 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
-                  placeholder="Your Name"
+                  className="w-full px-4 py-2 rounded-md bg-gray-900 text-white placeholder-gray-400 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                  placeholder="Enter your name"
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-white mb-2">Email</label>
+                <label htmlFor="email" className="block text-white mb-2">
+                  Email Address
+                </label>
                 <input
                   type="email"
                   id="email"
-                  className="w-full px-4 py-2 rounded-md bg-white/20 text-white placeholder-gray-300 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
-                  placeholder="Your Email"
+                  className="w-full px-4 py-2 rounded-md bg-gray-900 text-white placeholder-gray-400 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                  placeholder="Enter your email"
                 />
               </div>
               <div>
-                <label htmlFor="phone" className="block text-white mb-2">Phone</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  className="w-full px-4 py-2 rounded-md bg-white/20 text-white placeholder-gray-300 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
-                  placeholder="Your Phone Number"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-white mb-2">Message</label>
+                <label htmlFor="message" className="block text-white mb-2">
+                  Your Message
+                </label>
                 <textarea
                   id="message"
                   rows="4"
-                  className="w-full px-4 py-2 rounded-md bg-white/20 text-white placeholder-gray-300 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50"
-                  placeholder="Your Message"
+                  className="w-full px-4 py-2 rounded-md bg-gray-900 text-white placeholder-gray-400 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                  placeholder="Type your message here"
                 ></textarea>
               </div>
               <button
                 type="submit"
-                className="w-full py-3 px-6 bg-white text-gray-900 rounded-md hover:bg-gray-100 transition-colors"
+                className="w-full py-3 px-6 bg-teal-500 text-white font-semibold rounded-md hover:bg-teal-600 transition"
               >
                 Send Message
               </button>
             </form>
           </motion.div>
 
-          {/* Contact Information */}
+          {/* Contact Info */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             className="space-y-8"
           >
-            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-lg shadow-lg">
-              <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <svg className="w-6 h-6 text-white mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  <div>
-                    <p className="text-gray-200 font-semibold">Head Office</p>
-                    <p className="text-gray-300">123 Construction Street, Building City, 12345</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <svg className="w-6 h-6 text-white mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                  <div>
-                    <p className="text-gray-200 font-semibold">Phone</p>
-                    <p className="text-gray-300">+91 95358 65555</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <svg className="w-6 h-6 text-white mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                  <div>
-                    <p className="text-gray-200 font-semibold">Email</p>
-                    <p className="text-gray-300">rakeshmohan7999@gmail.com</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <svg className="w-6 h-6 text-white mt-1 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <div>
-                    <p className="text-gray-200 font-semibold">Business Hours</p>
-                    <p className="text-gray-300">Monday - Friday: 9:00 AM - 6:00 PM</p>
-                    <p className="text-gray-300">Saturday: 10:00 AM - 4:00 PM</p>
-                    <p className="text-gray-300">Sunday: 10:00 AM - 4:00 PM</p>
-                  </div>
-                </div>
-              </div>
+            <div className="bg-gray-800/70 backdrop-blur-md p-8 rounded-lg shadow-xl">
+              <h3 className="text-2xl font-bold text-white mb-6">
+                Our Location
+              </h3>
+              <p className="text-gray-300">
+                No 005, JK Sambrama, 1st Cross, Medahalli Virgonagar Post, Bangalore 560049
+              </p>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.005925272344!2d77.5942773!3d12.9715987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBangalore%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1647852345678!5m2!1sen!2sin"
-                width="100%"
-                height="300"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="w-full h-[300px]"
-              ></iframe>
+            <div className="bg-gray-800/70 backdrop-blur-md p-8 rounded-lg shadow-xl">
+              <h3 className="text-2xl font-bold text-white mb-6">
+                Reach Us On
+              </h3>
+              <p className="text-gray-300">Phone: +91 95358 65555</p>
+              <p className="text-gray-300">Email: rakeshmohan7999@gmail.com</p>
             </div>
           </motion.div>
         </div>
+
+        {/* Map Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="rounded-lg overflow-hidden shadow-xl"
+        >
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.005925272344!2d77.5942773!3d12.9715987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBangalore%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1647852345678!5m2!1sen!2sin"
+            width="100%"
+            height="400"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="w-full h-[400px]"
+          ></iframe>
+        </motion.div>
       </div>
     </section>
   );
 };
 
-export default GetInTouch; 
+export default GetInTouch;

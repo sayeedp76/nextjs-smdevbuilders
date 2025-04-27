@@ -3,175 +3,188 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { Building2, Award, Users, Star, ArrowRight } from 'lucide-react';
 
 const AboutUs = () => {
   return (
-    <section className="relative py-20 min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
-      <div className="container mx-auto px-4">
-        {/* Hero Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-4xl font-bold text-white mb-4">
-            About Sai Manjunath Builders and Developers
-          </h1>
-          <p className="text-gray-700 mb-6">
-            Founded in 1995, Sai Manjunath Builders and Developers has grown from a small construction company to one of the most trusted names in the industry. Our journey began with a simple mission: to build quality homes and commercial spaces that stand the test of time.
-          </p>
-        </motion.div>
-
-        {/* Company Overview */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="space-y-6"
-          >
-            <h2 className="text-3xl font-bold text-white">Our Story</h2>
-            <p className="text-gray-300 leading-relaxed">
-              Over the years, we've completed over 500 projects, ranging from residential complexes to commercial buildings, each reflecting our commitment to quality and customer satisfaction.
-            </p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="relative h-[400px] rounded-lg overflow-hidden shadow-xl"
-          >
-            <img
-              src="/jkbuilder images/ethinic design.jpg"
-              alt="Ethnic Design"
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
-        </div>
-
-        {/* Mission and Vision */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+      {/* Hero Section */}
+      <section className="relative py-20">
+        <div className="absolute inset-0 bg-gradient-to-r from-amber-500/10 to-transparent" />
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="bg-gray-800 p-8 rounded-lg shadow-lg border border-gray-700"
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
           >
-            <h3 className="text-2xl font-bold text-white mb-4">Our Mission</h3>
-            <p className="text-gray-300 leading-relaxed">
-              To deliver exceptional construction services that exceed client expectations through innovative solutions, sustainable practices, and unwavering commitment to quality.
-            </p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-gray-800 p-8 rounded-lg shadow-lg border border-gray-700"
-          >
-            <h3 className="text-2xl font-bold text-white mb-4">Our Vision</h3>
-            <p className="text-gray-300 leading-relaxed">
-              To be the leading construction company known for transforming architectural dreams into reality while setting new standards in quality, sustainability, and customer satisfaction.
+            <h1 className="text-4xl md:text-6xl font-bold text-grey mb-6">
+              About Sai Manjunath Builders
+            </h1>
+            <div className="w-24 h-1 bg-amber-500 mx-auto mb-8" />
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Building dreams with excellence and integrity since 1995
             </p>
           </motion.div>
         </div>
+      </section>
 
-        {/* Core Values */}
-        <div className="mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl font-bold text-white">Our Core Values</h2>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: 'Quality',
-                description: 'We never compromise on quality, ensuring every project meets the highest standards.',
-                icon: '🏗️'
-              },
-              {
-                title: 'Integrity',
-                description: 'We conduct business with honesty, transparency, and ethical practices.',
-                icon: '🤝'
-              },
-              {
-                title: 'Innovation',
-                description: 'We embrace new technologies and methods to deliver better results.',
-                icon: '💡'
-              }
-            ].map((value, index) => (
-              <motion.div
-                key={value.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="bg-gray-800 p-6 rounded-lg shadow-lg text-center border border-gray-700"
-              >
-                <div className="text-4xl mb-4">{value.icon}</div>
-                <h3 className="text-xl font-bold text-white mb-2">{value.title}</h3>
-                <p className="text-gray-300">{value.description}</p>
-              </motion.div>
-            ))}
+      {/* Company Overview */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="relative h-[500px] rounded-lg overflow-hidden"
+            >
+              <Image
+                src="/jkbuilder-images/about/about-image.jpg"
+                alt="Sai Manjunath Builders Office"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <h3 className="text-2xl font-bold text-white mb-2">Our Legacy</h3>
+                <p className="text-gray-300">Building Excellence Since 1995</p>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="space-y-8"
+            >
+              <div className="bg-gray-800/50 p-6 rounded-lg border-l-4 border-amber-500">
+                <h3 className="text-2xl font-bold text-white mb-4">Our Story</h3>
+                <p className="text-gray-300">
+                  Founded in 1995, Sai Manjunath Builders has grown from a small construction company to one of Bangalore's most trusted builders. Our journey has been marked by consistent quality, innovation, and customer satisfaction.
+                </p>
+              </div>
+              <div className="bg-gray-800/50 p-6 rounded-lg border-l-4 border-amber-500">
+                <h3 className="text-2xl font-bold text-white mb-4">Our Mission</h3>
+                <p className="text-gray-300">
+                  To create exceptional living and working spaces that enhance quality of life while maintaining the highest standards of construction and design.
+                </p>
+              </div>
+            </motion.div>
           </div>
         </div>
+      </section>
 
-        {/* Team Section */}
-        <div>
+      {/* Leadership Team */}
+      <section className="py-16 bg-gray-800/50">
+        <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
           >
-            <h2 className="text-3xl font-bold text-white">Our Leadership Team</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">Our Leadership Team</h2>
+            <div className="w-24 h-1 bg-amber-500 mx-auto" />
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                name: 'John Kumar',
-                position: 'Founder & CEO',
-                image: '/jkbuilder images/testimony1.jpg'
-              },
-              {
-                name: 'Sarah Patel',
-                position: 'Chief Architect',
-                image: '/jkbuilder images/testimony2.webp'
-              },
-              {
-                name: 'Michael Chen',
-                position: 'Project Director',
-                image: '/jkbuilder images/testimony3.jpg'
-              }
-            ].map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="bg-gray-800 rounded-lg shadow-lg overflow-hidden border border-gray-700"
-              >
-                <div className="relative h-64">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover"
-                  />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              className="bg-gray-800 p-6 rounded-lg border border-gray-700"
+            >
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center mr-4">
+                  <Users className="w-8 h-8 text-white" />
                 </div>
-                <div className="p-6 text-center">
-                  <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
-                  <p className="text-gray-300">{member.position}</p>
+                <div>
+                  <h3 className="text-xl font-bold text-white">Mr. Rakesh</h3>
+                  <p className="text-amber-500">Founder & CEO</p>
                 </div>
-              </motion.div>
-            ))}
+              </div>
+              <p className="text-gray-300">
+                With over 25 years of experience in the construction industry, Mr. Rakesh leads our company with vision and expertise.
+              </p>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              className="bg-gray-800 p-6 rounded-lg border border-gray-700"
+            >
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center mr-4">
+                  <Building2 className="w-8 h-8 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white">Mallesh Rai</h3>
+                  <p className="text-amber-500">Chief Architect</p>
+                </div>
+              </div>
+              <p className="text-gray-300">
+                Our Chief Architect, Mallesh K, brings innovative design solutions and technical expertise to every project.
+              </p>
+            </motion.div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Achievements */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-gray-800/50 p-6 rounded-lg text-center border border-gray-700"
+            >
+              <Award className="w-12 h-12 text-amber-500 mx-auto mb-4" />
+              <h3 className="text-2xl font-bold text-white mb-2">50+</h3>
+              <p className="text-gray-300">Projects Completed</p>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-gray-800/50 p-6 rounded-lg text-center border border-gray-700"
+            >
+              <Star className="w-12 h-12 text-amber-500 mx-auto mb-4" />
+              <h3 className="text-2xl font-bold text-white mb-2">25+</h3>
+              <p className="text-gray-300">Years of Experience</p>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="bg-gray-800/50 p-6 rounded-lg text-center border border-gray-700"
+            >
+              <Users className="w-12 h-12 text-amber-500 mx-auto mb-4" />
+              <h3 className="text-2xl font-bold text-white mb-2">1000+</h3>
+              <p className="text-gray-300">Happy Clients</p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Contact CTA */}
+      <section className="py-16 bg-gray-800/50">
+        <div className="container mx-auto px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-3xl font-bold text-white mb-6">Ready to Start Your Project?</h2>
+            <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
+              Contact us today to discuss your construction needs and let us help bring your vision to life.
+            </p>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-amber-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-amber-600 transition-colors"
+            >
+              Get in Touch
+            </motion.button>
+          </motion.div>
+        </div>
+      </section>
+    </div>
   );
 };
 

@@ -1,175 +1,198 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [filter, setFilter] = useState('all');
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const images = [
     {
+      id: 1,
       src: '/jkbuilder images/villa1.jpg',
-      category: 'residential',
-      title: 'Luxury Villa Project'
+      alt: 'Luxury Villa Project',
+      category: 'Residential'
     },
     {
-      src: '/jkbuilder images/villa2.jpg',
-      category: 'residential',
-      title: 'Modern Apartment Complex'
+      id: 2,
+      src: '/jkbuilder images/penthouse.jpg',
+      alt: 'Penthouse Project',
+      category: 'Commercial'
     },
     {
+      id: 3,
       src: '/jkbuilder images/modular 1.jpg',
-      category: 'commercial',
-      title: 'Office Space Design'
+      alt: 'Modular Home Project',
+      category: 'Residential'
     },
     {
-      src: '/jkbuilder images/modular2.jpg',
-      category: 'commercial',
-      title: 'Retail Complex'
-    },
-    {
+      id: 4,
       src: '/jkbuilder images/interior1.jpg',
-      category: 'interior',
-      title: 'Luxury Interior Design'
+      alt: 'Interior Design Project',
+      category: 'Interior'
     },
     {
+      id: 5,
+      src: '/jkbuilder images/villa2.jpg',
+      alt: 'Modern Villa Project',
+      category: 'Residential'
+    },
+    {
+      id: 6,
       src: '/jkbuilder images/interior2.jpg',
-      category: 'interior',
-      title: 'Modern Living Space'
+      alt: 'Luxury Interior Project',
+      category: 'Interior'
     },
     {
+      id: 7,
+      src: '/jkbuilder images/luxury 1.jpg',
+      alt: 'Luxury Home Project',
+      category: 'Residential'
+    },
+    {
+      id: 8,
       src: '/jkbuilder images/interior3.jpg',
-      category: 'interior',
-      title: 'Contemporary Design'
+      alt: 'Contemporary Interior Project',
+      category: 'Interior'
     },
     {
+      id: 9,
       src: '/jkbuilder images/interior4.jpg',
-      category: 'interior',
-      title: 'Elegant Interior'
+      alt: 'Modern Interior Project',
+      category: 'Interior'
     }
   ];
 
-  const filteredImages = filter === 'all' 
+  const categories = ['All', 'Residential', 'Commercial', 'Interior'];
+  const [activeCategory, setActiveCategory] = useState('All');
+
+  const filteredImages = activeCategory === 'All' 
     ? images 
-    : images.filter(image => image.category === filter);
+    : images.filter(img => img.category === activeCategory);
+
+  const handleImageClick = (image, index) => {
+    setSelectedImage(image);
+    setCurrentIndex(index);
+  };
+
+  const handleClose = () => {
+    setSelectedImage(null);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === 0 ? filteredImages.length - 1 : prevIndex - 1
+    );
+    setSelectedImage(filteredImages[currentIndex === 0 ? filteredImages.length - 1 : currentIndex - 1]);
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === filteredImages.length - 1 ? 0 : prevIndex + 1
+    );
+    setSelectedImage(filteredImages[currentIndex === filteredImages.length - 1 ? 0 : currentIndex + 1]);
+  };
 
   return (
-    <section className="relative py-20 min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
+    <section className="py-20 bg-gradient-to-br from-blue-50 to-sky-100">
       <div className="container mx-auto px-4">
-        {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h1 className="text-5xl font-bold text-white mb-6">
-            Our Gallery
-          </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Explore our portfolio of completed projects and get inspired
+          <h2 className="text-4xl font-bold text-blue-900 mb-4">Our Gallery</h2>
+          <p className="text-blue-800 max-w-2xl mx-auto">
+            Explore our collection of completed projects and ongoing constructions
           </p>
         </motion.div>
 
-        {/* Filter Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-wrap justify-center gap-4 mb-12"
-        >
-          {['all', 'residential', 'commercial', 'interior'].map((category) => (
+        {/* Category Filter */}
+        <div className="flex justify-center gap-4 mb-8">
+          {categories.map((category) => (
             <button
               key={category}
-              onClick={() => setFilter(category)}
-              className={`px-6 py-2 rounded-full text-sm font-semibold transition-colors ${
-                filter === category
-                  ? 'bg-amber-600 text-white'
-                  : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+              onClick={() => setActiveCategory(category)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                activeCategory === category
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-white text-blue-600 hover:bg-blue-50'
               }`}
             >
-              {category.charAt(0).toUpperCase() + category.slice(1)}
+              {category}
             </button>
           ))}
-        </motion.div>
-
-        {/* Image Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence>
-            {filteredImages.map((image, index) => (
-              <motion.div
-                key={image.src}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-                className="relative group cursor-pointer"
-                onClick={() => setSelectedImage(image)}
-              >
-                <div className="relative h-64 rounded-lg overflow-hidden">
-                  <img
-                    src={image.src}
-                    alt={image.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="absolute bottom-0 left-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                    <h3 className="text-lg font-semibold">{image.title}</h3>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
         </div>
 
-        {/* Image Modal */}
-        <AnimatePresence>
-          {selectedImage && (
+        {/* Image Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredImages.map((image, index) => (
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
-              onClick={() => setSelectedImage(null)}
+              key={image.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="relative group cursor-pointer overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+              onClick={() => handleImageClick(image, index)}
             >
-              <motion.div
-                initial={{ scale: 0.9 }}
-                animate={{ scale: 1 }}
-                exit={{ scale: 0.9 }}
-                className="relative max-w-4xl w-full"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <img
-                  src={selectedImage.src}
-                  alt={selectedImage.title}
-                  className="w-full h-auto rounded-lg"
+              <div className="relative h-64">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-300 group-hover:scale-110"
                 />
-                <button
-                  onClick={() => setSelectedImage(null)}
-                  className="absolute top-4 right-4 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700 transition-colors"
-                >
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              </motion.div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute bottom-0 left-0 right-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                  <h3 className="text-lg font-semibold">{image.alt}</h3>
+                  <p className="text-sm">{image.category}</p>
+                </div>
+              </div>
             </motion.div>
-          )}
-        </AnimatePresence>
+          ))}
+        </div>
+
+        {/* Lightbox */}
+        {selectedImage && (
+          <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+            <button
+              onClick={handleClose}
+              className="absolute top-4 right-4 text-white hover:text-blue-400 transition-colors"
+            >
+              <X size={32} />
+            </button>
+            <button
+              onClick={handlePrev}
+              className="absolute left-4 text-white hover:text-blue-400 transition-colors"
+            >
+              <ChevronLeft size={48} />
+            </button>
+            <button
+              onClick={handleNext}
+              className="absolute right-4 text-white hover:text-blue-400 transition-colors"
+            >
+              <ChevronRight size={48} />
+            </button>
+            <div className="relative w-full max-w-4xl h-[80vh]">
+              <Image
+                src={selectedImage.src}
+                alt={selectedImage.alt}
+                fill
+                sizes="(max-width: 1200px) 100vw, 80vw"
+                className="object-contain"
+                priority
+              />
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
 };
 
-export default Gallery; 
+export default Gallery;

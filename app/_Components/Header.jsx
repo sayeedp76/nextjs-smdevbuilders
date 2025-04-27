@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 import {
   Dialog,
   DialogPanel,
@@ -24,6 +25,19 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Menu,
+  X,
+  ChevronDown,
+  Building2,
+  Home,
+  Briefcase,
+  Users,
+  Award
+} from 'lucide-react'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -44,114 +58,136 @@ const callsToAction = [
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const navLinks = [
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    { name: 'Services', href: '/services' },
+    { name: 'Gallery', href: '/gallery' },
+    { name: 'Contact', href: '/contact' },
+  ]
 
   return (
-    <header className="bg-gradient-to-r from-slate-100 via-gray-200 to-slate-300 border-b border-gray-300">
-      <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8">
-        <div className="flex lg:flex-1">
-          <Link href="/" className="p-0">
-            <span className="sr-only">JK Builders</span>
-            <div className="hexagon-container">
-              <div className="watermark">
-                <span className="watermark-text left">J</span>
-                <span className="watermark-text right">K</span>
-              </div>
-              <Image 
-                src="/logo.png" 
-                alt="JK Builders" 
-                width={800} 
-                height={800} 
-                className="h-24 w-auto hexagon-shape" 
-              />
+    <header className={`fixed w-full z-50 transition-all duration-300 ${
+      scrolled ? 'bg-white/90 backdrop-blur-md shadow-lg' : 'bg-transparent'
+    }`}>
+      {/* Top Bar */}
+      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center space-x-4">
+              <a href="tel:+919876543210" className="flex items-center hover:text-amber-300 transition-colors">
+                <Phone className="w-4 h-4 mr-2" />
+                <span className="text-sm">+91 98765 43210</span>
+              </a>
+              <a href="mailto:info@saimanjunathbuilders.com" className="flex items-center hover:text-amber-300 transition-colors">
+                <Mail className="w-4 h-4 mr-2" />
+                <span className="text-sm">info@saimanjunathbuilders.com</span>
+              </a>
             </div>
-          </Link>
+            <div className="flex items-center space-x-4">
+              <a href="#" className="flex items-center hover:text-amber-300 transition-colors">
+                <MapPin className="w-4 h-4 mr-2" />
+                <span className="text-sm">Bangalore, India</span>
+              </a>
+            </div>
+          </div>
         </div>
-        <div className="flex lg:hidden">
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(true)}
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-          >
-            <span className="sr-only">Open main menu</span>
-            <Bars3Icon aria-hidden="true" className="size-6" />
-          </button>
-        </div>
-        <PopoverGroup className="hidden lg:flex lg:gap-x-8 lg:items-center">
-          <Popover className="relative">
-            <PopoverButton className="flex items-center gap-x-1 text-base font-semibold text-gray-900">
-              Projects
-              <ChevronDownIcon aria-hidden="true" className="size-5 flex-none text-gray-400" />
-            </PopoverButton>
-            <PopoverPanel className="absolute top-full -left-8 z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
-              <div className="p-4">
-                {products.map((item) => (
-                  <div
-                    key={item.name}
-                    className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-gray-50"
-                  >
-                    <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                      <item.icon aria-hidden="true" className={`size-6 ${
-                        item.name === 'Plots' ? 'text-green-600' :
-                        item.name === 'Residential Houses' ? 'text-blue-600' :
-                        item.name === 'Villas' ? 'text-purple-600' :
-                        item.name === 'Apartments' ? 'text-orange-600' :
-                        'text-red-600'
-                      } group-hover:text-indigo-600`} />
-                    </div>
-                    <div className="flex-auto">
-                      <a href={item.href} className="block font-semibold text-gray-900">
-                        {item.name}
-                        <span className="absolute inset-0" />
-                      </a>
-                      <p className="mt-1 text-gray-600">{item.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-                {callsToAction.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-gray-900 hover:bg-gray-100"
-                  >
-                    <item.icon aria-hidden="true" className="size-5 flex-none text-gray-400" />
-                    {item.name}
-                  </a>
-                ))}
-              </div>
-            </PopoverPanel>
-          </Popover>
+      </div>
 
-          <Link href="#" className="text-base font-semibold text-gray-900">
-            Home
-          </Link>
-          <Link href="#" className="text-base font-semibold text-gray-900">
-            About Us
-          </Link>
-          <Link href="#" className="text-base font-semibold text-gray-900">
-            Services
-          </Link>
-          <Link href="#" className="text-base font-semibold text-gray-900">
-            Facilities
-          </Link>
-          <Link href="#" className="text-base font-semibold text-gray-900">
-            Blogs
-          </Link>
-        </PopoverGroup>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-6 lg:items-center">
-          <div className="flex gap-x-4">
-            <Button className="px-6 bg-blue-600 hover:bg-blue-700 text-white">
-              <UserRoundSearch size={20} className="mr-2" />
-              Contact Us
-            </Button>
-            <Button variant="secondary" className="bg-green-600 hover:bg-green-700 text-white">
-              <MapPinHouse size={20} className="mr-2" />
-              Visit Now
-            </Button>
+      {/* Main Navigation */}
+      <nav className="py-4">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center">
+            {/* Logo */}
+            <Link href="/" className="relative w-48 h-16">
+              <Image
+                src="/jkbuilder images/1745699234675.png"
+                alt="JK Builders"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                priority
+                className="object-contain"
+              />
+            </Link>
+
+            {/* Desktop Menu */}
+            <div className="hidden md:flex items-center space-x-8">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={`text-lg font-medium transition-colors ${
+                    scrolled ? 'text-gray-800 hover:text-blue-600' : 'text-white hover:text-amber-300'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+              <Link
+                href="/contact"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                Get a Quote
+              </Link>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden text-white focus:outline-none"
+            >
+              {isOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
           </div>
         </div>
       </nav>
+
+      {/* Mobile Menu */}
+      <motion.div
+        initial={false}
+        animate={isOpen ? "open" : "closed"}
+        variants={{
+          open: { opacity: 1, height: "auto" },
+          closed: { opacity: 0, height: 0 }
+        }}
+        className="md:hidden bg-white shadow-lg"
+      >
+        <div className="container mx-auto px-4 py-4">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className="block py-3 text-gray-800 hover:text-blue-600 transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              {link.name}
+            </Link>
+          ))}
+          <Link
+            href="/contact"
+            className="block mt-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full text-center hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
+            onClick={() => setIsOpen(false)}
+          >
+            Get a Quote
+          </Link>
+        </div>
+      </motion.div>
+
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
         <div className="fixed inset-0 z-10" />
         <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
@@ -159,7 +195,7 @@ export default function Header() {
             <Link href="/" className="p-0">
               <div className="hexagon-container">
                 <Image 
-                  src="/logo.png" 
+                  src="/jkbuilder images/1745699234675.png" 
                   alt="JK Builders" 
                   width={600} 
                   height={600} 

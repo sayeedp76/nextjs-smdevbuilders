@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const Banner = () => {
   const containerVariants = {
@@ -12,9 +12,9 @@ const Banner = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
-        delayChildren: 0.3
-      }
-    }
+        delayChildren: 0.3,
+      },
+    },
   };
 
   const itemVariants = {
@@ -25,141 +25,155 @@ const Banner = () => {
       transition: {
         type: "spring",
         stiffness: 100,
-        damping: 10
-      }
-    }
+        damping: 10,
+      },
+    },
   };
 
+  const properties = [
+    {
+      title: "Residential",
+      description: "Premium Houses & Apartments",
+      icon: "/jkbuilder images/apartments-icon.png",
+    },
+    {
+      title: "Commercial",
+      description: "Office Spaces & Retail",
+      icon: "/jkbuilder images/sale-icon.png",
+    },
+    {
+      title: "Premium",
+      description: "Luxury Villas & Penthouses",
+      icon: "/jkbuilder images/rent-icon.png",
+    },
+    {
+      title: "Industrial",
+      description: "Warehouses & Factories",
+      icon: "/jkbuilder images/sale-icon.png",
+    },
+    {
+      title: "Land",
+      description: "Plots & Agricultural Spaces",
+      icon: "/jkbuilder images/rent-icon.png",
+    },
+    {
+      title: "Hospitality",
+      description: "Hotels & Resorts",
+      icon: "/jkbuilder images/apartments-icon.png",
+    },
+    {
+      title: "Retail Spaces",
+      description: "Shops & Malls",
+      icon: "/jkbuilder images/sale-icon.png",
+    },
+    {
+      title: "Smart Homes",
+      description: "AI-Powered Residences",
+      icon: "/jkbuilder images/apartments-icon.png",
+    },
+    {
+      title: "Medical Facilities",
+      description: "Clinics & Healthcare Buildings",
+      icon: "/jkbuilder images/rent-icon.png",
+    },
+  ];
+
   return (
-    <div className="container mx-auto px-4 py-12">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-        <div className="space-y-6">
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-sm bg-gray-100 inline-block px-4 py-2 rounded-full"
-          >
-            <span className="font-bold text-blue-600">JK Builders</span> - Your Trusted Construction Partner
-          </motion.p>
-          
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-4xl lg:text-5xl font-bold"
-          >
-            Search And Tour With <span className="text-blue-600">JKM Builders</span>
-          </motion.h1>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-gray-600 text-lg"
-          >
-            Discover your dream property with JKM Builders. We offer a wide range of residential and commercial properties.
-          </motion.p>
+    <div className="relative bg-gradient-to-br from-black via-gray-900 to-gray-800 overflow-hidden min-h-[850px] py-12">
+      {/* Animated Background */}
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-pink-600/10 to-purple-600/10 opacity-75 animate-pulse" />
 
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="flex gap-4"
-          >
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg">
-              Explore Now
-            </Button>
-          </motion.div>
+      <div className="container mx-auto px-4 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          {/* Text Section */}
+          <div className="space-y-6">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-sm bg-gray-900/50 px-4 py-2 rounded-full backdrop-blur-md shadow-lg text-blue-400"
+            >
+              <span className="font-bold">SM BUILDERS</span> - Pioneering the Future
+            </motion.p>
 
-          <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-5xl lg:text-6xl font-bold text-gray-200 tracking-wide"
+            >
+              Explore <span className="text-blue-400 glow-on-text">Futuristic Properties</span> with SM Developers
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="text-lg text-gray-300"
+            >
+              Discover luxury residences and cutting-edge commercial spaces built for tomorrow.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="flex gap-4"
+            >
+              <Button className="bg-gradient-to-br from-blue-600 to-purple-600 px-8 py-3 text-white text-lg rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-transform">
+                Explore Now
+              </Button>
+              <Button className="bg-white/20 backdrop-blur-md px-8 py-3 text-blue-200 text-lg rounded-lg border border-blue-400 hover:bg-blue-600/30 hover:text-white transition-all">
+                Learn More
+              </Button>
+            </motion.div>
+          </div>
+
+          {/* Image/Interactive Section */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.8 }}
+            className="relative"
           >
-            <motion.div 
-              className="text-center p-4 hover:bg-gray-50 rounded-lg transition-all group"
-              variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
-            >
-              <div className="relative w-20 h-20 mx-auto mb-4">
-                <Image 
-                  src="/jkbuilder images/apartments-icon.png" 
-                  alt="Residential Properties" 
-                  fill
-                  className="object-contain group-hover:scale-110 transition-transform duration-300"
-                />
-              </div>
-              <p className="font-semibold text-gray-900">Residential</p>
-              <p className="text-sm text-gray-600 mt-1">Premium Houses & Apartments</p>
-            </motion.div>
-            <motion.div 
-              className="text-center p-4 hover:bg-gray-50 rounded-lg transition-all group"
-              variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
-            >
-              <div className="relative w-20 h-20 mx-auto mb-4">
-                <Image 
-                  src="/jkbuilder images/sale-icon.png" 
-                  alt="Commercial Properties" 
-                  fill
-                  className="object-contain group-hover:scale-110 transition-transform duration-300"
-                />
-              </div>
-              <p className="font-semibold text-gray-900">Commercial</p>
-              <p className="text-sm text-gray-600 mt-1">Office Spaces & Retail</p>
-            </motion.div>
-            <motion.div 
-              className="text-center p-4 hover:bg-gray-50 rounded-lg transition-all group"
-              variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
-            >
-              <div className="relative w-20 h-20 mx-auto mb-4">
-                <Image 
-                  src="/jkbuilder images/rent-icon.png" 
-                  alt="Premium Properties" 
-                  fill
-                  className="object-contain group-hover:scale-110 transition-transform duration-300"
-                />
-              </div>
-              <p className="font-semibold text-gray-900">Premium</p>
-              <p className="text-sm text-gray-600 mt-1">Luxury Villas & Penthouses</p>
-            </motion.div>
+            <div className="relative w-full max-w-lg mx-auto">
+              <Image
+                src="/jkbuilder images/1745699234675.png"
+                alt="SM Builders Logo"
+                fill
+                className="rounded-lg shadow-2xl border-2 border-blue-400 hover:scale-105 transition-transform"
+              />
+              {/* Optional Glow Overlay */}
+              <div className="absolute inset-0 rounded-lg border-2 border-blue-400/50 animate-pulse" />
+            </div>
           </motion.div>
         </div>
 
-        <motion.div 
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          className="relative"
+        {/* Property Categories */}
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
         >
-          <div className="w-full max-w-lg mx-auto">
-            <div className="relative flex items-center">
-              <div className="absolute flex items-center left-3">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-slate-600">
-                  <path d="M8.25 4.5a3.75 3.75 0 1 1 7.5 0v8.25a3.75 3.75 0 1 1-7.5 0V4.5Z" />
-                  <path d="M6 10.5a.75.75 0 0 1 .75.75v1.5a5.25 5.25 0 1 0 10.5 0v-1.5a.75.75 0 0 1 1.5 0v1.5a6.751 6.751 0 0 1-6 6.709v2.291h3a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1 0-1.5h3v-2.291a6.751 6.751 0 0 1-6-6.709v-1.5A.75.75 0 0 1 6 10.5Z" />
-                </svg>
-                <div className="h-6 border-l border-slate-200 ml-2.5"></div>
+          {properties.map((item, index) => (
+            <motion.div
+              key={item.title}
+              className="text-center p-4 bg-gray-900/70 rounded-lg hover:shadow-lg transform hover:scale-105 transition-all group"
+              variants={itemVariants}
+            >
+              <div className="relative w-20 h-20 mx-auto mb-4">
+                <Image
+                  src={item.icon}
+                  alt={item.title}
+                  fill
+                  className="object-contain group-hover:scale-110 transition-transform duration-300"
+                />
               </div>
-
-              <input
-                className="w-full bg-white placeholder:text-slate-400 text-slate-700 text-lg border border-slate-200 rounded-lg pr-3 pl-14 py-3 transition duration-300 ease-in-out focus:outline-none focus:border-blue-400 hover:border-slate-300 shadow-sm focus:shadow"
-                placeholder="Search properties..." 
-              />
-              
-              <button
-                className="absolute right-3 rounded-md bg-blue-600 p-2.5 text-white transition-all hover:bg-blue-700 focus:bg-blue-700"
-                type="button"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-                  <path fillRule="evenodd" d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z" clipRule="evenodd" />
-                </svg>
-              </button> 
-            </div>
-          </div>
+              <p className="font-semibold text-gray-200">{item.title}</p>
+              <p className="text-sm text-gray-400 mt-1">{item.description}</p>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </div>

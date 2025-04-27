@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navigation = [
+  const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Services', href: '/services' },
@@ -22,17 +22,17 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-20">
           <Link href="/" className="flex items-center">
             <Image
-              src="/logo.PNG"
+              src="/jkbuilder images/1745699234675.png" 
               alt="Sai Manjunath Builders and Developers Logo"
-              width={150}
-              height={50}
-              className="h-12 w-auto"
+              width={85}
+              height={80}
+              className="h-auto"
             />
           </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8">
-            {navigation.map((item) => (
+            {navLinks.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
@@ -86,7 +86,7 @@ const Navbar = () => {
           className="md:hidden"
         >
           <div className="px-2 pt-2 pb-3 space-y-1">
-            {navigation.map((item) => (
+            {navLinks.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
